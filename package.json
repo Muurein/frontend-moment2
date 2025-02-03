@@ -1,7 +1,7 @@
 {
   "name": "moment2",
   "version": "1.0.0",
-   "source": "src/index-html",
+  "source": "src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel",
@@ -10,7 +10,7 @@
   "author": "Amanda Thim",
   "license": "ISC",
   "description": "",
-  "browserslist": "> 0.5%, last 2 versions, not dead", 
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "devDependencies": {
     "parcel": "^2.13.3"
   }
