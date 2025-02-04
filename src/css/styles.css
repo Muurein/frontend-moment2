@@ -5,5 +5,22 @@ body {
     font-size: 1.2em;
     line-height: 1.6em;
     background-color:rgb(19, 56, 19);
-    color: white;
+}
+
+main {
+    background-color: rgb(250, 249, 249);
+    padding: 2em;
+    margin-top: 2em;
+}
+
+main table th {
+    text-decoration-line: underline;
+    font-weight: 300;
+}
+
+main table td {
+    border-bottom: 2px solid gainsboro;
+}
+
+main table tr {
 }
