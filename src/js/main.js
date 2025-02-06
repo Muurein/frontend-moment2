@@ -42,73 +42,18 @@ async function loadCourses() {
 }
 
 function writeOutCourses(data) {
-    //const codeEl = document.querySelector("#code");
-    //const nameEl = document.querySelector("#name");
-    const progressionAEl = document.querySelector("#progressionA");
-    const progressionBEl = document.querySelector("#progressionB");
+   // https://www.youtube.com/watch?v=XmdOZ5NSqb8&list=PL-51WBLyFTg1l3K0aTH0uX6PzgaLfzJBK
+   //hämtar tabellen
+    const tableEl = document.querySelector("table");
 
-    //rensa bort DOM
-    //codeEl.innerHTML = "";
-    //nameEl.innerHTML = "";
-    progressionAEl.innerHTML = "";
-    progressionBEl.innerHTML = "";
+    //loop som går igenom tabellen och lägger till i tabellen
+    for(let i = 0; i < data.length; i++) {
+        const tableRow = `<tr>
+                    <td>${data[i].code}</td>
+                    <td>${data[i].coursename}</td>
+                    <td>${data[i].progression}</td>
+                    </tr>`
 
-    //Sortera utifrån kurskod
-    //data.sort((a, b) => a.code > b.code ? 1 : -1);
-    //data.sort((a, b) => a.coursename > b.coursename ? 1 : -1);
-    data.sort((a, b) => a.progression > b.progression ? 1 : -1);
-
-    //skilj på de olika kategorierna
-    //const courseCodes = data.filter(courses => courses.type === "code"); 
-    //const courseNames = data.filter(courses => courses.type === "name"); 
-    const courseProgressionA = data.filter(courses => courses.progression === "A");
-    const courseProgressionB = data.filter(courses => courses.progression === "B");
-
-    console.table(courseProgressionA);
-
-    //skriv ut till DOM
-    //varje gång loopen händer måste ett <tr> skapas
-    //som ska innehålla dessa <td>
-    //en ny <tr>-instans måste skapas
-    
-    courseProgressionA.forEach(progA => {
-        /* didn't work
-        let tableEl = document.createElement("tr");
-        let tableRowEl = document.querySelector("td");
-        tableEl.appendChild(tableRowEl); */
-
-        /*
-            fuuunkade - dock bara för en enda rad, och ingen B
-            const tr = document.createElement("tr");
-            tr.appendChild( //lade till denna och det verkar funka??
-            //men det står att det är fel med anslutningen?
-                progressionAEl.innerHTML += `<td>${progA.code}</td>`,
-                progressionAEl.innerHTML += `<td>${progA.coursename}</td>`,
-                progressionAEl.innerHTML += `<td>${progA.progression}</td>`,
-            )
-        */
-
-        //create seperate function to create element????
-        //http://www.w3schools.com/jsref/jsref_map.asp
-
-        //eller med entries: http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_entries
-        progressionAEl.innerHTML += `<td>${progA.code}</td>`;
-        progressionAEl.innerHTML += `<td>${progA.coursename}</td>`;
-        progressionAEl.innerHTML += `<td>${progA.progression}</td>`;
-        
-    })
-
-    courseProgressionB.forEach(progB => {
-        const tr = document.createElement("tr");
-
-        // blev fel progressionBEl.innerHTML += `<td>${progB.code}, ${progB.coursename}, ${progB.progression}</td>`;
-            progressionBEl.innerHTML += `<td>${progB.code}</td>`;
-            progressionBEl.innerHTML += `<td>${progB.coursename}</td>`;
-            progressionBEl.innerHTML += `<td>${progB.progression}</td>`;
-        
-    })
-
-    //ANVÄNDA COURSES.MAP PÅ NÅGOT SÄTT?
-
-   
+        tableEl.innerHTML += tableRow;
+    }
 }
