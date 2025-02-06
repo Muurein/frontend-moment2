@@ -15,7 +15,7 @@ window.onload = () => {
     loadCourses();
 
     //för filtrering
-    //document.querySelector("#search-field").addEventListener("input", goThroughData);
+    document.getElementById("search-field").addEventListener("input", filterOutData);
 }
 
 async function loadCourses() {
@@ -46,6 +46,8 @@ function writeOutCourses(data) {
    //hämtar tabellen
     const tableEl = document.querySelector("table");
 
+    tableEl.innerHTML = "";
+
     //loop som går igenom tabellen och lägger till i tabellen
     for(let i = 0; i < data.length; i++) {
         const tableRow = `<tr>
@@ -57,3 +59,21 @@ function writeOutCourses(data) {
         tableEl.innerHTML += tableRow;
     }
 }
+
+function filterOutData() {
+    //hämtar sökfältet
+    const searchPhrase = document.getElementById("search-field").value;
+
+    //skapar en temporär variabel så inget händer med arrayen
+    //sök/filtrera efter kurskod, kursnamn eller progression
+    const filteredData = courses.filter(courses =>
+        courses.code.toLowerCase().includes(searchPhrase.toLowerCase())
+    ||
+        courses.coursename.toLowerCase().includes(searchPhrase.toLowerCase())
+    ||
+    courses.progression.toLowerCase().includes(searchPhrase.toLowerCase())
+    )
+
+    writeOutCourses(filteredData);
+}
+
