@@ -87,28 +87,49 @@ function filterOutData() {
 //sorterar efter kurskod 
 function sortColumnsCode() {
     const sortedData = courses.sort((a, b) => a.code > b.code ? 1: -1);
+    const headerCodeEl = document.getElementById("sortCode").addEventListener("click", reverseSortCode);
 
     return writeOutCourses(sortedData);
+}
+
+function reverseSortCode() {
+    const reverseData = courses.reverse((a, b) => a.code > b.code ? 1: -1);
+    //försökte göra det möjligt att man klickar igen och sorterar som i sortcolumnCode igen, men får det inte att funka
+    const headerCodeEl = document.getElementById("sortCode").addEventListener("click", sortColumnsCode);
+    
+    return writeOutCourses(reverseData);
 }
 
 //sorterar efter kursnamn 
 function sortColumnsName() {
     const sortedData = courses.sort((a, b) => a.coursename > b.coursename ? 1: -1);
-    const headerNameEl = document.getElementById("sortCourse").addEventListener("click", reverseSort);
+    const headerNameEl = document.getElementById("sortCourse").addEventListener("click", reverseSortName);
 
     return writeOutCourses(sortedData);
 }
+
+function reverseSortName() {
+    const reverseData = courses.reverse((a, b) => a.coursename > b.coursename ? 1: -1);
+    const headerNameEl = document.getElementById("sortCourse").addEventListener("click", sortColumnsName);
+
+    return writeOutCourses(reverseData);
+}
+
 
 //sorterar efter kursprogression
 function sortColumnsProgress() {
     const sortedData = courses.sort((a, b) => a.progression > b.progression ? 1: -1);
-
+    const headerProgressEl = document.getElementById("sortProgress").addEventListener("click", reverseSortProgress);
 
     return writeOutCourses(sortedData);
 }
 
-/*function reverseSort() {
-    const reverseData = courses.reverse((a, b) => a.coursename > b.coursename ? 1: -1);
-    const headerNameEl = document.getElementById("sortCourse").addEventListener("click", sortColumnsName);
+function reverseSortProgress() {
+    const reverseData = courses.reverse((a, b) => a.progression> b.progression ? 1: -1);
+    const headerProgressEl = document.getElementById("sortProgress").addEventListener("click", sortColumnsProgress);
+
     return writeOutCourses(reverseData);
-}*/
+}
+
+
+
