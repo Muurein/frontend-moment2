@@ -5,12 +5,16 @@
     4. VALFRITT: om man först sorterar i bokstavsordning ska man sen kunna klicka igen och sortera från andra hållet
 */
 
-"use strict" //ANVÄND COURSES.SORT NÄR MAN KLICKAR PÅ <TH>???
+"use strict"
 
 //global array to store courses
 let courses = [];
 
-//KANSKE KAN SKRIVA UT DEN HÄR FÖR ATT GÖRA DEN ANNORLUNDA????
+//sortering - när man klickar på en tabell-rubrik
+const headerCodeEl = document.getElementById("sortCode").addEventListener("click", sortColumnsCode);
+const headerNameEl = document.getElementById("sortCourse").addEventListener("click", sortColumnsName);
+const headerProgressEl = document.getElementById("sortProgress").addEventListener("click", sortColumnsProgress);
+
 window.onload = () => {
     loadCourses();
 
@@ -41,11 +45,13 @@ async function loadCourses() {
     }   
 }
 
+//skriver ut datan
 function writeOutCourses(data) {
-   // https://www.youtube.com/watch?v=XmdOZ5NSqb8&list=PL-51WBLyFTg1l3K0aTH0uX6PzgaLfzJBK
+   // based on https://www.youtube.com/watch?v=XmdOZ5NSqb8&list=PL-51WBLyFTg1l3K0aTH0uX6PzgaLfzJBK
    //hämtar tabellen
-    const tableEl = document.querySelector("table");
+    const tableEl = document.querySelector("tbody");
 
+    //rensar
     tableEl.innerHTML = "";
 
     //loop som går igenom tabellen och lägger till i tabellen
@@ -60,6 +66,7 @@ function writeOutCourses(data) {
     }
 }
 
+//filtrerar datan
 function filterOutData() {
     //hämtar sökfältet
     const searchPhrase = document.getElementById("search-field").value;
@@ -71,9 +78,37 @@ function filterOutData() {
     ||
         courses.coursename.toLowerCase().includes(searchPhrase.toLowerCase())
     ||
-    courses.progression.toLowerCase().includes(searchPhrase.toLowerCase())
+        courses.progression.toLowerCase().includes(searchPhrase.toLowerCase())
     )
 
     writeOutCourses(filteredData);
 }
 
+//sorterar efter kurskod 
+function sortColumnsCode() {
+    const sortedData = courses.sort((a, b) => a.code > b.code ? 1: -1);
+
+    return writeOutCourses(sortedData);
+}
+
+//sorterar efter kursnamn 
+function sortColumnsName() {
+    const sortedData = courses.sort((a, b) => a.coursename > b.coursename ? 1: -1);
+    const headerNameEl = document.getElementById("sortCourse").addEventListener("click", reverseSort);
+
+    return writeOutCourses(sortedData);
+}
+
+//sorterar efter kursprogression
+function sortColumnsProgress() {
+    const sortedData = courses.sort((a, b) => a.progression > b.progression ? 1: -1);
+
+
+    return writeOutCourses(sortedData);
+}
+
+/*function reverseSort() {
+    const reverseData = courses.reverse((a, b) => a.coursename > b.coursename ? 1: -1);
+    const headerNameEl = document.getElementById("sortCourse").addEventListener("click", sortColumnsName);
+    return writeOutCourses(reverseData);
+}*/

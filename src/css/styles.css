@@ -11,14 +11,50 @@ main {
     background-color: rgb(250, 249, 249);
     padding: 2em;
     margin-top: 2em;
+    margin-bottom: 2em;
+    width: 900px;
+    border-radius: 50px;;
 }
 
-main table th {
-    text-decoration-line: underline;
-    font-weight: 300;
+main h1 {
+    text-align: center;
 }
 
-main table td {
+.search {
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 3em;
+}
+
+.search input {
+    width: 300px;
+    height: 2em;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+}
+
+table thead {
+    text-align: left;
+}
+
+table th {
     border-bottom: 2px solid gainsboro;
+    text-align: center;
+    cursor: pointer;
 }
 
+table tr {
+    margin: 3em;
+}
+
+table td {
+    padding: 1em;
+    border-bottom: 2px solid gainsboro;
+    text-align: center;
+}
