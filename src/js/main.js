@@ -15,6 +15,7 @@ const headerCodeEl = document.getElementById("sortCode").addEventListener("click
 const headerNameEl = document.getElementById("sortCourse").addEventListener("click", sortColumnsName);
 const headerProgressEl = document.getElementById("sortProgress").addEventListener("click", sortColumnsProgress);
 
+//ladda in när sidan laddar in
 window.onload = () => {
     loadCourses();
 
