@@ -1,1 +1,7 @@
 # Assignment 2 in Frontend-course VT2025
+
+## Steps:
+    1. present the courses in a table
+    2. create a functioning search-bar
+    3. make it possible to sort the different columns by clicking in their
+        respective <th>-elements
