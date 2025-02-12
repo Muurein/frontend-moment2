@@ -1,10 +1,3 @@
-/*
-    1. sortera fram det man skriver
-    2. ska kunna skriva små bokstäver och ändå få sökt på stora bokstäver
-    3. ska kunna klicka på en kategori i tabellen och sortera i stigande eller fallnde ordning
-    4. VALFRITT: om man först sorterar i bokstavsordning ska man sen kunna klicka igen och sortera från andra hållet
-*/
-
 "use strict"
 
 //global array to store courses
